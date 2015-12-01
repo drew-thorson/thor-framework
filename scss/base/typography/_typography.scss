@@ -1,0 +1,160 @@
+@import 'base/typography/typography-config';
+
+/* #Typography
+================================================== */
+html {
+	background: $html-background;
+	color: $html-color;
+	font-size: $t-font-size;
+	font-family: $t-font-family;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@if $support-ie8 {
+		margin: 0 0 ($t-font-size * .75); /* IE8 fallback */
+	}
+	margin: 0rem 0rem .75rem;
+	line-height: 1;
+} 
+
+h1 {
+	@if $support-ie8 {
+		font-size: $t-font-size * 2; /* IE8 fallback */
+	}
+	font-size: 2rem;
+}
+
+h2 {
+	@if $support-ie8 {
+		font-size: $t-font-size * 1.5; /* IE8 fallback */
+	}
+	font-size: 1.5rem;
+}
+
+h3 {
+	@if $support-ie8 {
+		font-size: $t-font-size * 1.17; /* IE8 fallback */
+	}
+	font-size: 1.17rem;
+}
+
+h4 {
+	@if $support-ie8 {
+		font-size: $t-font-size * 1.12; /* IE8 fallback */
+	}
+	font-size: 1.12rem;
+}
+
+h5 {
+	@if $support-ie8 {
+		font-size: $t-font-size * .83; /* IE8 fallback */
+	}
+	font-size: .83rem;
+}
+
+h6 {
+	@if $support-ie8 {
+		font-size: $t-font-size * .75; /* IE8 fallback */
+	}
+	font-size: .75rem;
+}
+
+p {
+	@if $support-ie8 {
+		font-size: $t-font-size; /* IE8 fallback */
+		margin: 0 0 1.5em; /* IE8 fallback */
+	}
+	font-size: 1rem;
+	margin: 0 0 1.5rem;
+	line-height: 1.5;
+}
+
+strong, b { font-weight: bold; }
+i, em { font-style: italic; }
+small {
+	@if $support-ie8 {
+		font-size: $t-font-size * .8; /* IE8 fallback */
+	}
+	font-size: .8rem;
+}
+
+pre {
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+    margin: 1rem 0rem;
+}
+
+blockquote, q {
+	background: #fff;
+	padding: 15px 20px 15px 45px;
+	margin-bottom: 1em;
+	position: relative;
+	line-height: 1.2;
+	color: #666;
+	text-align: justify;
+}
+
+blockquote:before, q:before {
+	content: "\201C"; /* Unicode for Left Double Quote */
+	font-family: Georgia, serif;
+	font-size: 4em;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+	left: 10px;
+	top: 5px;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin: 1em 0;
+    padding-left: 40px;
+}
+
+ul { 
+    display: block;
+    list-style-type: disc;
+    margin: 1em 0;
+    padding-left: 40px;
+}
+
+li {}
+
+sup { 
+    vertical-align: super;
+    font-size: .5em;
+}
+
+sub { 
+    vertical-align: sub;
+    font-size: .5em;
+}
+
+// Utility typography classes
+
+// Alternate Fonts
+.#{$class-type}font--secondary {font-family: $t-font-family-secondary;}
+.#{$class-type}font--tertiary {font-family: $t-font-family-tertiary;}
+
+// Text transform
+.#{$class-type}text--lowercase {text-transform: lowercase;}
+.#{$class-type}text--uppercase {text-transform: uppercase;}
+.#{$class-type}text--capitalize {text-transform: capitalize;}
+
+// Font Weight
+.#{$class-type}text--light {font-weight: lighter;}
+.#{$class-type}text--normal {font-weight: normal;}
+.#{$class-type}text--bold {font-weight: bolder;}
+
+// Italic Text
+.#{$class-type}text--italic {font-style: italic;}
+
+// Text align
+.#{$class-type}text--left {text-align: left;}
+.#{$class-type}text--right {text-align: right;}
+.#{$class-type}text--center {text-align: center;}
+.#{$class-type}text--justfiy {text-align: justify;}

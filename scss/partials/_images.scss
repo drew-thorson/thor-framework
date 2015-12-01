@@ -1,0 +1,27 @@
+@mixin image-sprite-builder($name, $imgwidth, $imgheight, $imgnumber) {
+	.#{$name}-#{$imgwidth}-by-#{$imgheight} {
+		overflow: hidden;
+		position: relative;
+		display: block;
+		&:after {
+			content: "";
+			display: block;
+			padding-bottom: 100% * ($imgheight/$imgwidth);
+		}
+		& img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+		}
+		@for $i from 2 through $imgnumber {
+			.img-#{$i} {
+				left: -100% * ($i - 1);
+			}
+		}
+	}
+}
+
+/* #Image Utility Classes
+================================================== */
+@include image-sprite-builder('imgholder', 16, 9, 6);

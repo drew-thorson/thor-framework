@@ -1,0 +1,191 @@
+//////////////////////////////////////////////////////////
+// BUILD MIXINS (don't edit this!)  //////////////////////
+//////////////////////////////////////////////////////////
+
+@mixin linear-gradient($angle, $color-stops...) {
+	$_angle-with-vendor-prefix: "";
+	$_angle: "";
+	@if $angle == "to top" or $angle == "bottom" {
+		$_angle-with-vendor-prefix: bottom;
+		$_angle: to top;
+	} @else if $angle == "to right" or $angle == "left" {
+		$_angle-with-vendor-prefix: left;
+		$_angle: to right;
+	} @else if $angle == "to bottom" or $angle == "top" {
+		$_angle-with-vendor-prefix: top;
+		$_angle: to bottom;
+	} @else if $angle == "to left" or $angle == "right" {
+		$_angle-with-vendor-prefix: right;
+		$_angle: to left;
+	} @else if $angle == "to top right" or $angle == "bottom left" {
+		$_angle-with-vendor-prefix: bottom left;
+		$_angle: to top right;
+	} @else if $angle == "to bottom right" or $angle == "top left" {
+		$_angle-with-vendor-prefix: top left;
+		$_angle: to bottom right;
+	} @else if $angle == "to bottom left" or $angle == "top right" {
+		$_angle-with-vendor-prefix: top right;
+		$_angle: to bottom left;
+	} @else if $angle == "to top left" or $angle == "bottom right" {
+		$_angle-with-vendor-prefix: bottom right;
+		$_angle: to top left;
+	} @else {
+		$_angle-with-vendor-prefix: $angle % 360;
+		$_angle: (90 - $angle) % 360;
+	}
+
+	background: nth($color-stops,1);
+	background: -webkit-linear-gradient($_angle-with-vendor-prefix, $color-stops); /* Chrome10+,Safari5.1+ */
+	background: -moz-linear-gradient($_angle-with-vendor-prefix, $color-stops); /* FF3.6+ */
+	background: -o-linear-gradient($_angle-with-vendor-prefix, $color-stops); /* Opera 11.10+ */
+	background: linear-gradient($_angle, $color-stops);
+}
+
+@mixin build-btn-corner($a) {
+    @if ($a == 'pill') {
+        border-radius: 2em;
+    } @else if ($a == 'rounded') {
+        border-radius: .5em;
+    } @else if ($a == 'edge') {
+        border-radius: 0;
+    } @else {
+        border-radius: .2em;
+    }
+}
+
+// Disabled buttons styling
+@mixin disabledButtons {
+    background: #EEE;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+    color: #CCC;
+    cursor: default;
+}
+
+// Disabled buttons styling w/border
+@mixin disabledButtonsWBorder {
+	border: 2px solid #CCC;
+}
+
+// Gradient Buttons Mixin
+@mixin build-btn-gradient($a, $b, $c) {
+    @include linear-gradient(top,  lighten($a, 5%), darken($a, 5%));
+    border-color: darken($a, 10%);
+    color: $b;
+    text-shadow: 0 -1px 1px rgba(darken($a, 30%), 0.35);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.5),0 1px 2px rgba(0,0,0,.15);
+    @include build-btn-corner($c);
+    @if $support-ie8 {
+    	// IE8 support for disabled buttons
+		&[disabled="disabled"] {
+			@include disabledButtons;
+		    &:hover, &:focus, &:active {
+				@include disabledButtons;
+		    }
+	    }
+    }
+    &:hover, &:focus {
+        color: $b;
+        @include linear-gradient(top,  lighten($a, 10%), darken($a, 5%));
+    }
+    &:active {
+        background: desaturate($a, 20%);
+        color: darken($a, 20%);
+    }
+    &:disabled {
+		@include disabledButtons;
+    }
+}
+
+// Flat buttons Mixin
+@mixin build-btn-flat($a, $b, $c) {
+    background: $a;
+    color: $b;
+    @include build-btn-corner($c);
+    @if $support-ie8 {
+    	// IE8 support for disabled buttons
+		&[disabled="disabled"] {
+			@include disabledButtons;
+		    &:hover, &:focus, &:active {
+				@include disabledButtons;
+		    }
+	    }
+    }
+    &:hover, &:focus {
+        background: lighten($a, 10%);
+        color: $b;
+    }
+    &:active {
+        background: desaturate($a, 20%);
+        color: darken($a, 20%);
+    }
+    &:disabled {
+		@include disabledButtons;
+    }
+}
+
+// Border buttons Mixin
+@mixin build-btn-border($a, $b, $c) {
+    background: none;
+    color: $a;
+    border: 2px solid $a;
+    text-shadow: none;
+    @include build-btn-corner($c);
+    @if $support-ie8 {
+    	// IE8 support for disabled buttons
+		&[disabled="disabled"] {
+			@include disabledButtons;
+			@include disabledButtonsWBorder;
+		    &:hover, &:focus, &:active {
+				@include disabledButtons;
+				@include disabledButtonsWBorder;
+		    }
+	    }
+    }
+    &:hover, &:focus {
+        background: lighten($a, 10%);
+        color: $b;
+        border: 2px solid lighten($a, 10%);
+    }
+    &:active {
+        background: none;
+        color: darken($a, 10%);
+        border: 2px solid darken($a, 10%);
+    }
+    &:disabled {
+		@include disabledButtons;
+		@include disabledButtonsWBorder;
+    }
+}
+
+// Border-hover buttons Mixin
+@mixin build-btn-border-hover($a, $b, $c) {
+    background: $a;
+    color: $b;
+    text-shadow: none;
+    border: 2px solid $a;
+    @include build-btn-corner($c);
+    @if $support-ie8 {
+    	// IE8 support for disabled buttons
+		&[disabled="disabled"] {
+			@include disabledButtons;
+			@include disabledButtonsWBorder;
+		    &:hover, &:focus, &:active {
+				@include disabledButtons;
+				@include disabledButtonsWBorder;
+		    }
+	    }
+    }
+    &:hover, &:focus {
+        background: none;
+        color: $a;
+    }
+    &:active {
+        background: lighten($a, 10%);
+        color: darken($a, 10%);
+        border: 2px solid darken($a, 10%);
+    }
+    &:disabled {
+		@include disabledButtons;
+		@include disabledButtonsWBorder;
+    }
+}

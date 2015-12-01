@@ -1,0 +1,152 @@
+@import 'components/buttons/buttons-config';
+@import 'components/buttons/buttons-mixins';
+
+/* #Buttons
+================================================== */
+.#{$class-type}#{$button-namespace} {
+	font: $button-font;
+	cursor: pointer;
+	padding: .5em 1.5em;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	@if $support-ie8 {
+		font-size: 1em;
+	}
+	font-size: 1rem;
+
+	// Modifiers
+    &--xlarge {
+		@if $support-ie8 {
+			font-size: 1.5em;
+		}
+		font-size: 1.5rem;
+	}
+	&--large {
+		@if $support-ie8 {
+			font-size: 1.25em;
+		}
+		font-size: 1.25rem;
+	}
+	&--small {
+		@if $support-ie8 {
+			font-size: .80em;
+		}
+		font-size: .80rem;
+	}
+	&--xsmall {
+		@if $support-ie8 {
+			font-size: .70em;
+		}
+		font-size: .70rem;
+	}
+	&--full-width {
+		width: 100%;
+	}
+	&--bold {
+		font-weight: bold;
+	}
+	&--upper {
+		text-transform: uppercase;
+	}
+	&--block {
+		display: block;
+		width: 100%;
+	}
+
+	// Shadows
+	&--no-highlight {
+		box-shadow: none;
+	}
+	&--light-shadow {
+		box-shadow: .1em .2em .2em rgba(0,0,0,0.35);
+	}
+	&--heavy-shadow {
+		box-shadow: .1em .2em .2em rgba(0,0,0,0.7);
+	}
+	&--inset-shadow {
+		box-shadow: inset .0em -0.15em .5em rgba(0,0,0,0.5);
+	}
+}
+
+@each $btn-action in $btn-actions {
+	$btn-namespace: '.' + $class-type + $button-namespace;
+    // Get name, background color, and text color
+	$btn-name: nth($btn-action, 1);
+	$btn-type: nth($btn-action, 2);
+	$btn-corner-type: nth($btn-action, 3);
+	$btn-background: nth($btn-action, 4);
+	$btn-text-color: nth($btn-action, 5);
+
+    @if ($btn-type == 'gradient') {
+	    // Gradient Buttons
+	    #{$btn-namespace}--#{$btn-name} {
+	    	@include build-btn-gradient($btn-background,$btn-text-color,$btn-corner-type);
+	    }
+    } @else if ($btn-type == 'flat') {
+	    // Flat buttons
+	    #{$btn-namespace}--#{$btn-name} {
+	    	@include build-btn-flat($btn-background,$btn-text-color,$btn-corner-type);
+	    }
+    } @else if ($btn-type == 'border') {
+		// Border Buttons
+	    #{$btn-namespace}--#{$btn-name} {
+	    	@include build-btn-border($btn-background,$btn-text-color,$btn-corner-type);
+		}
+    } @else if ($btn-type == 'border-hover') {
+		// Border Buttons
+	    #{$btn-namespace}--#{$btn-name} {
+	    	@include build-btn-border-hover($btn-background,$btn-text-color,$btn-corner-type);
+		}
+	}
+}
+
+@if $btn-build-demo {
+/* #Buttons Demo
+================================================== */
+	@each $btn-action in $btn-actions {
+		$btn-namespace: '.' + $class-type + $button-namespace;
+	    // Get name, background color, and text color
+		$btn-name: nth($btn-action, 1);
+		$btn-type: nth($btn-action, 2);
+		$btn-corner-type: nth($btn-action, 3);
+		$btn-background: nth($btn-action, 4);
+		$btn-text-color: nth($btn-action, 5);
+
+	    // Gradient Buttons
+	    #{$btn-namespace}--#{$btn-name}_gradient {
+	    	@include build-btn-gradient($btn-background,$btn-text-color,$btn-corner-type);
+	    }
+	    // Flat buttons
+	    #{$btn-namespace}--#{$btn-name}_flat {
+	    	@include build-btn-flat($btn-background,$btn-text-color,$btn-corner-type);
+	    }
+		// Border Buttons
+	    #{$btn-namespace}--#{$btn-name}_border {
+	    	@include build-btn-border($btn-background,$btn-text-color,$btn-corner-type);
+		}
+		// Border Buttons
+	    #{$btn-namespace}--#{$btn-name}_border-hover {
+	    	@include build-btn-border-hover($btn-background,$btn-text-color,$btn-corner-type);
+		}
+	}
+/* #End Buttons Demo */
+}
+
+.#{$class-type}#{$button-namespace} {
+	// Non stackable utility classes
+	// Corners
+    &--edge {
+		border-radius: 0;
+	}
+    &--rounded {
+		border-radius: .5em;
+	}
+	&--pill {
+		border-radius: 2em;
+	}
+	&--default {
+		border-radius: .2em;
+	}
+}

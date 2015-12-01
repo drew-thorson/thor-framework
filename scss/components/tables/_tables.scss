@@ -1,0 +1,99 @@
+@import 'components/tables/tables-config';
+
+/* #Responsive Compare Vehicle
+================================================== */
+#tblCompareVehicles {
+	& td { width: 25%; }
+	& .tableheading { background: #aaa; }
+	& input { width: 100%; }
+	& .vehicleoption {
+		display: block;
+		text-align: center;
+		font-weight: bold;
+		color: red;
+	}
+}
+
+@media screen and (max-width: 600px) {
+
+	#tblCompareVehicles {
+		& td { width: 100%; }
+		& input { width: 100%; }
+		& .vehicleoption {
+			display: block;
+			text-align: center;
+			font-weight: bold;
+			color: red;
+		}
+	}
+
+}
+/* #Responsive Tables
+================================================== */
+table {
+	display: table;
+	width: 100%;
+	font-size: .9rem;
+	tbody {
+		width: 100%;
+		border: 1px solid #DDD;
+	}
+	tr {
+		padding: 10px;
+		border-top: 1px solid #DDD;
+		&+ tr {
+			border-top: 1px dashed #DDD;
+		}
+		&:hover {
+			background: #F0F0F0;
+		}
+	}
+	td {
+		text-align: left;
+		padding: 10px;
+	}
+	.rc-heading-td h3 {
+		text-align: center;
+		margin: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+
+	table {
+		tbody {
+			border: none;
+		}
+		tbody, tr, td {
+			display: block;
+		}
+		tr {
+			border: 1px solid #DDD;
+			padding: 10px;
+			&+ tr {
+				border: 1px solid #DDD;
+				margin-top: 10px;
+			}
+		}
+		td {
+			text-align: right;
+			padding: 10px;
+			&+ td {
+				border-top: 1px dashed #DDD;
+			}
+			&:before {
+				content: attr(data-label);
+				display: block;
+				float: left;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+		}
+	}
+	thead {
+		display: none;
+	}
+	.rc-heading-tr {
+		display: none;
+	}
+}

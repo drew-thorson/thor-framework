@@ -1,0 +1,27 @@
+@import "base/config";
+$class-type: get-namespace('object');
+
+/* #Video Utility Classes
+================================================== */
+[class*="#{$class-type}#{$video-namespace}_container"] {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	& iframe, & object, & embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%
+	}
+}
+
+@mixin video-ratio-builder($name, $vidwidth, $vidheight) {
+	.#{$class-type}#{$name}_container--#{$vidwidth}-by-#{$vidheight} {
+		padding-bottom: 100% * ($vidheight/$vidwidth);
+	}
+}
+
+@each $video-aspect-ratio in $video-aspect-ratios {
+	@include video-ratio-builder($video-namespace, nth($video-aspect-ratio, 1), nth($video-aspect-ratio, 2));
+}

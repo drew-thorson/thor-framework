@@ -1,0 +1,94 @@
+@import 'components/inputs/inputs-config';
+
+// Input border and spacing.
+$input-border-width: 1px;
+$input-border-style: solid;
+$input-border-color: #333;
+$input-padding: 5px;
+$input-border-radius: 2px;
+$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+$input-background: #fafafa;
+$input-height: 2;
+$input-font-family: inherit;
+$input-font-color: #333;
+$input-placeholder-color: #aaa;
+
+// Focus input styles
+$input-border-color-focus: #f1825f;
+
+/* #Inputs
+================================================== */
+.#{$class-type}#{$input-namespace} {
+	&--text,
+	&--number,
+	&--datetime_local,
+	&--date,
+	&--email,
+	&--phone,
+	&--pass,
+	&--text_area,
+	&--select {
+	}
+	&--text_area {
+		height: 150px;
+	}
+	&_label {
+		display: block;
+		margin-bottom: 5px;
+	}
+	&--button {
+		line-height: $input-height;
+		padding: $input-padding + $input-border-width;
+	}
+	@if $input-build-default {
+		border: $input-border-width $input-border-style $input-border-color;
+		color: $input-font-color;
+		font: $input-font-family;
+		outline: 0 none;
+		padding: $input-padding;
+		width: 100%;
+		max-width: 100%;
+		line-height: $input-height;
+		border-radius: $input-border-radius;
+		box-shadow: $input-box-shadow;
+		background: $input-background;
+		&:focus {
+			border: $input-border-width $input-border-style $input-border-color-focus;
+		}
+	} @else if $input-build-underline {
+		border: none;
+		border-bottom: 2px $input-border-style $input-border-color;
+		color: $input-font-color;
+		font: $input-font-family;
+		outline: 0 none;
+		padding: $input-padding;
+		width: 100%;
+		max-width: 100%;
+		line-height: $input-height;
+		border-radius: $input-border-radius;
+		box-shadow: $input-box-shadow;
+		background: $input-background;
+		&:focus {
+			border-bottom: 2px $input-border-style $input-border-color-focus;
+		}
+	}
+}
+
+::-webkit-input-placeholder {
+	/* WebKit, Blink, Edge */
+	color: $input-placeholder-color;
+}
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: $input-placeholder-color;
+	opacity:  1;
+}
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: $input-placeholder-color;
+	opacity:  1;
+}
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: $input-placeholder-color;
+}

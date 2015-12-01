@@ -1,0 +1,17 @@
+//////////////////////////////////////////////////////////
+// BUILD TYPES (don't edit this!)  ///////////////////////
+//////////////////////////////////////////////////////////
+
+// Purpose of this file is to set global flags for which
+// types we'll include in our final css build or not.
+$input-build-default: false;
+$input-build-underline: false;
+
+// For all types provided by user we mark true
+@each $input-type in $input-types {
+    @if $input-type == 'default' {
+        $input-build-default: true;
+    } @else if $input-type == 'underline' {
+        $input-build-underline: true;
+    }
+}

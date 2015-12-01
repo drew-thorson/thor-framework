@@ -1,0 +1,23 @@
+$slick-loader-path: "./";
+$slick-font-family: "FontAwesome";
+$slick-arrow-color: #21A5CD;
+
+$slick-dot-color: #000;
+$slick-dot-color-active: $slick-dot-color;
+$slick-dot-character: "\f111";
+$slick-dot-size: 6px;
+
+$slick-next-character: "\f105";
+$slick-prev-character: "\f104";
+
+$slick-opacity-default: 0.75;
+$slick-opacity-on-hover: 1;
+$slick-opacity-not-active: 0.25;
+
+/* #Slick Slider
+================================================== */
+@import 'vendor/slick/slick';
+
+/* #Slick Slider - Theme
+================================================== */
+@import 'vendor/slick/slick-theme';

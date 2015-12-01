@@ -1,0 +1,53 @@
+@import "base/config";
+$class-type: get-namespace('layout');
+
+// Show grid for visual
+$show-grid: false;
+
+// Number of columns for the framework
+$config: (
+    breakpoints: (
+        $class-type + 'lg',
+        $class-type + 'med',
+        $class-type + 'sm',
+        $class-type + 'sml'
+    ),
+    pagebreaks: (
+        '',
+        'screen and (min-width: 768px) and (max-width: 980px)',
+        'screen and (max-width: 767px)',
+        'screen and (min-width: 480px) and (max-width: 767px)'
+    ),
+    setfullwidth: (
+        '',
+        '[class*="#{$class-type}lg-col-"]',
+        '[class*="#{$class-type}lg-col-"], [class*="#{$class-type}med-col-"]',
+        ''
+    )
+);
+
+$gutter: $g-gutter;
+$columns: $g-columns;
+$breakpoints: map-deep-get($config, breakpoints);
+$pagebreaks: map-deep-get($config, pagebreaks);
+$setfullwidth: map-deep-get($config, setfullwidth);
+
+// Grid builder
+@mixin gridBuilder($a) {
+    // cycle through the $columns for first part of fraction
+    @for $i from 1 through $columns {
+        // cycle through the $columns for second part of fraction
+        @for $j from $i through $columns {
+            // create dynamic extends
+            $temp: #{round(($i/$j)*1000)};
+            // Makes new extend if lowest common denominator
+            @if (gcd($j,$i) == 1) {
+                %#{$a}-#{$temp}-width { width: 100% * ($i/$j); }
+            }
+            // Extend class if same name
+            .#{$a}-col-#{$i}-#{$j} {
+                @extend %#{$a}-#{$temp}-width;
+            }
+        }
+    }
+}

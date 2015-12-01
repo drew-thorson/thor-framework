@@ -1,0 +1,17 @@
+//////////////////////////////////////////////////////////
+// BUILD TYPES (don't edit this!)  ///////////////////////
+//////////////////////////////////////////////////////////
+
+// Purpose of this file is to set global flags for which
+// types we'll include in our final css build or not.
+$tables-build-default: false;
+$tables-build-underline: false;
+
+// For all types provided by user we mark true
+// @each $tables-type in $tables-types {
+//     @if $tables-type == 'default' {
+//         $tables-build-default: true;
+//     } @else if $tables-type == 'underline' {
+//         $tables-build-underline: true;
+//     }
+// }

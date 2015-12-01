@@ -1,0 +1,23 @@
+//////////////////////////////////////////////////////////
+// Global Namespaces /////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// This sets up the namespace prefixes according to the appropriate use of the class.
+$class-type-namespace: (
+    'layout'      : "l-",
+    'object'      : "o-",
+    'component'   : "c-",
+    'utility'	  : "u-",
+    'design'	  : "d-",
+    'javascript'  : "js-",
+    'hack'        : "_",
+    'is'          : "is-",
+    'has'         : "has-" );
+
+// Function returns name space when called
+@function get-namespace($set-namespace) {
+    $class-type: #{map-get($class-type-namespace, $set-namespace)};
+    @return $class-type;
+}
+
+@import "utilities/global-functions";

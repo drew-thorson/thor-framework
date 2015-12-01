@@ -1,0 +1,95 @@
+// Made by Drew Thorson -- www.drewthorson.com --
+
+//////////////////////////////////////////////////////////
+// Global Settings ///////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Toggle browser specific fallbacks/hacks
+$support-ie8: false !default;
+$support-ie9: false !default;
+
+// Base site background and text colors
+$html-background: #fff !default;
+$html-color: #333 !default;
+
+
+//////////////////////////////////////////////////////////
+// Grid Settings /////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Gutter spacing
+$g-gutter: 15px !default;
+
+// Set number of columns
+$g-columns: 12 !default;
+
+
+//////////////////////////////////////////////////////////
+// Typography Settings ///////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Default HTML font size
+$t-font-size: 16px !default;
+$t-font-family: 'Helvetica', 'Arial', 'Lucida Grande', sans-serif !default;
+$t-font-family-secondary: 'Times New Roman', Times, serif !default;
+$t-font-family-tertiary: 'Palatino Linotype', 'Book Antiqua', Palatino, serif !default;
+
+
+//////////////////////////////////////////////////////////
+// Input Settings ////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Name for all input classes
+$input-namespace: 'input' !default;
+
+// Input Style - Chose from default, underline
+$input-types: 'default' !default;
+
+
+//////////////////////////////////////////////////////////
+// Button Settings ///////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Name for all button classes
+$button-namespace: 'button' !default;
+
+// Button font
+$button-font: inherit !default;
+
+// ('class-name' 'button style' 'corner style' background-color text-color)
+// button styles - gradient, flat, border, border-hover
+// button corner styles - edge, default, rounded, pill
+$btn-actions:
+	('primary' 'gradient' 'edge' #00bcdd #FFFFFF)
+	('secondary' 'flat' 'default' #2f6f9c #FFFFFF)
+	('success' 'border' 'edge' #009190 #FFFFFF)
+	('danger' 'border-hover' 'pill' #df7527 #FFFFFF)
+	('warning' 'flat' 'rounded' #db4028 #FFFFFF) !default;
+
+
+//////////////////////////////////////////////////////////
+// Video Settings ////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Name for all video classes
+$video-namespace: 'video';
+
+// Add aspect ratio below to build class
+$video-aspect-ratios:
+	(21, 9)
+	(17, 9)
+	(16, 9)
+	(5, 3)
+	(16, 10) // 8:5
+	(3, 2)
+	(4, 3)
+	(256, 81)
+	(5, 4) !default;
+
+
+//////////////////////////////////////////////////////////
+// Prettify Settings /////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// Hide code blocks
+$pretty-print-code-block: false !default;
