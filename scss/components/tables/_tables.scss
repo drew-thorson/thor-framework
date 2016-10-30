@@ -1,33 +1,5 @@
 @import 'components/tables/tables-config';
 
-/* #Responsive Compare Vehicle
-================================================== */
-#tblCompareVehicles {
-	& td { width: 25%; }
-	& .tableheading { background: #aaa; }
-	& input { width: 100%; }
-	& .vehicleoption {
-		display: block;
-		text-align: center;
-		font-weight: bold;
-		color: red;
-	}
-}
-
-@media screen and (max-width: 600px) {
-
-	#tblCompareVehicles {
-		& td { width: 100%; }
-		& input { width: 100%; }
-		& .vehicleoption {
-			display: block;
-			text-align: center;
-			font-weight: bold;
-			color: red;
-		}
-	}
-
-}
 /* #Responsive Tables
 ================================================== */
 table {
