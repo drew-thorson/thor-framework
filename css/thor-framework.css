@@ -1166,30 +1166,6 @@ sub {
   /* Internet Explorer 10-11 */
   color: #aaa; }
 
-/* #Responsive Compare Vehicle
-================================================== */
-#tblCompareVehicles td {
-  width: 25%; }
-#tblCompareVehicles .tableheading {
-  background: #aaa; }
-#tblCompareVehicles input {
-  width: 100%; }
-#tblCompareVehicles .vehicleoption {
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  color: red; }
-
-@media screen and (max-width: 600px) {
-  #tblCompareVehicles td {
-    width: 100%; }
-  #tblCompareVehicles input {
-    width: 100%; }
-  #tblCompareVehicles .vehicleoption {
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    color: red; } }
 /* #Responsive Tables
 ================================================== */
 table {
